@@ -1,0 +1,25 @@
+.home-container {
+    background-color: var(--dark);
+    min-height: 100vh;
+    height: auto;
+    padding: 100px 0 0 0;
+}
+
+.content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.buttons-container {
+    max-width: fit-content;
+    padding: 5px;
+    margin: 0 auto;
+}
+
+.button-play {
+    margin: 0 auto 25px auto;
+}
+
+.button-rules {
+    margin: 0 auto;
+}

@@ -1,0 +1,7 @@
+.logo {
+    margin: 0;
+    font-family: 'Grenze', serif;
+    font-size: 64px;
+    -webkit-text-stroke-color: var(--secondary);
+    -webkit-text-stroke-width: 1px;
+}

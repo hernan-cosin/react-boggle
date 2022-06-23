@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter&family=Fira+Code&family=Grenze&family=Varela+Round&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+:root {
+  --principal: #0A0B26;
+  --secondary: #FA00FF;
+  --secondary-shadow: rgba(250, 0, 255, 0.35);
+  --black: #000;
+  --dark: #181921;
+  --white: #fff;
+  --grey: #282930;
+  --max-width: 1024px;
+}

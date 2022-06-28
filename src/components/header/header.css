@@ -34,4 +34,7 @@
 
 .logo {
     text-align: center;
+    cursor: pointer;
+    width: fit-content;
+    margin: 0 auto;
 }

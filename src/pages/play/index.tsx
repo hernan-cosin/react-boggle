@@ -1,16 +1,15 @@
-import React from "react";
-import { ButtonDice } from "ui/buttons/button-dice";
+import React, { useEffect } from "react";
+import { Board } from "components/board";
+import { useRecoilValue } from "recoil";
+import { timerFlag } from "atoms/atoms"
 import css from "./index.css"
 
 export function Play() {
-    function handleSuffleClick() {
-
-    }
+    const timerFlagVal =  useRecoilValue(timerFlag)
 
     return <section className={css["play-container"]} id="play-container">
         <div className={css.content}>
-        <ButtonDice  className={css["button-shuffle"]} letterClassName={css.shuffle} onClick={handleSuffleClick}>SHUFFLE</ButtonDice>
-
+        <Board></Board>
         </div>
     </section>
 }

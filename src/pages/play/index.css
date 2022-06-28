@@ -2,27 +2,10 @@
     background-color: var(--dark);
     min-height: 100vh;
     height: auto;
-    padding: 100px 0 0 0;
+    padding: 30px 10px 0 10px;
 }
 
 .content {
     max-width: var(--max-width);
     margin: 0 auto;
-}
-
-.button-shuffle {
-    margin: 0 auto;
-}
-
-.shuffle {
-    font-size: 11px;
-    padding: 9px 10px;
-}
-
-@media (min-width: 450px) {
-    .shuffle {
-        padding: 7px 16px;
-        border-radius: 15px;
-        font-size: 32px;
-    }
 }

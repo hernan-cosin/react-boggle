@@ -1,0 +1,43 @@
+.button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    column-gap: 10px;
+}
+
+.letter {
+    color: var(--white);
+    background-color: var(--dark);
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-family: 'Fira Code', monospace;
+    box-shadow: var(--secondary-shadow) 0 4px 8px;
+    margin: 0;
+    font-size: 22px;
+    width: fit-content;
+    display: inline-block;
+    min-width: 41.2px;
+    min-height: 41px;
+}
+
+@media (min-width: 450px) {
+    .letter {
+        padding: 6px 21px;
+        border-radius: 15px;
+        font-size: 42px;
+        min-height: 67.2px;
+        min-width: 68px;
+        text-align: center;
+    }
+}
+
+.q-letter {
+    padding: 6px 7px;
+}
+
+@media (min-width: 450px) {
+    .q-letter {
+        padding: 6px 8px;
+    }
+}

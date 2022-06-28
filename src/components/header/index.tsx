@@ -15,11 +15,7 @@ export function Header(){
     // const openMenuAtomValue = useRecoilValue(openMenu)
     
     function handleLogoClick() {
-    //     if (openMenuAtomValue) {
-    //         // cierra el menu si esta abierto
-    //         setOpenMenuAtom(false)
-    //     }
-    //     navigate("/", {replace:true})
+        navigate("/")
     }
 
     return <div className={css["header-container"]} id="header-container">
@@ -27,7 +23,7 @@ export function Header(){
         <div className={css["border-bottom-2"]} id={"border-bottom"}></div>
         <div className={css["header-content"]} id="header-content">
             <div onClick={handleLogoClick} className={css["logo-content"]} id="logo-content">
-                <Logo className={css.logo}></Logo>
+                <Logo className={css.logo} onClick={handleLogoClick}></Logo>
             </div>
         </div>
     </div>

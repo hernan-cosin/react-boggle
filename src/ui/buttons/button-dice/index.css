@@ -28,4 +28,17 @@
         border-radius: 15px;
         font-size: 32px;
     }
+
+    .letter:hover {
+        transform: scale(1.1) rotate(2.5deg);
+    }
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: .5;
+}
+
+.letter.disabled {
+    box-shadow: var(--black) 0 4px 8px;
 }

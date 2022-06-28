@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import uuid from 'react-uuid'
 import css from "./index.css"
 
 type props = {
@@ -6,6 +7,7 @@ type props = {
     letterClassName?: string
     children: string
     onClick?: ()=> void
+    disabled?: boolean
 }
 
 export function ButtonDice(p:props) {
@@ -41,8 +43,8 @@ export function ButtonDice(p:props) {
         }
     }, [mouseEnter])
     
-    return <button className={css.button + " " + `${p.className? p.className : ""}`} onClick={p.onClick? p.onClick : null} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        {splittedArray.map((l)=><p key={l} className={css["letter"] + " " + `${p.letterClassName? p.letterClassName : ""}`}>{mouseEnter? randomString() : l }</p>)}
+    return <button className={css.button + " " + `${p.className? p.className : ""}` + " " + `${p.disabled? css["disabled"] : ""}`} onClick={p.onClick? p.onClick : null} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        {splittedArray.map((l)=><p key={`${l+uuid()}`} className={css["letter"] + " " + `${p.letterClassName? p.letterClassName : ""}` + " " + `${p.disabled? css["disabled"] : ""}`}>{mouseEnter? randomString() : l }</p>)}
     </button>
 }
 

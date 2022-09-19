@@ -10,8 +10,9 @@ export function MyRouter() {
     return  <React.StrictMode> 
           <Routes>
               <Route path="/" element={<Layout />}>
-                <Route index element={<Home />}></Route>
-                <Route path="/play" element={<Play />}></Route>
+                {/* <Route index element={<Home />}></Route> */}
+                <Route index element={<Play />}></Route>
+                {/* <Route path="/play" element={<Play />}></Route> */}
                 <Route path="/rules" element={<Rules />}></Route>
               </Route>
           </Routes>

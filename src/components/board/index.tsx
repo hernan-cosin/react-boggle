@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import uuid from "react-uuid"
 import { ButtonDice } from "ui/buttons/button-dice";
 import { Dice } from "ui/dice";
+import { BoardContainer, BoardContent, DicesBox, RowContainer } from "./styled";
 import css from "./index.css";
 
 export function Board() {
@@ -34,7 +35,7 @@ export function Board() {
     function handleStartClick() {
         setButtonShuffleDisabled(false)
         setInitialState(false)
-        handleSuffleClick()
+        handleShuffleClick()
     }
 
     function handleRestarClick() {
@@ -135,14 +136,14 @@ export function Board() {
     }, [positions])
 
 
-    function handleSuffleClick() {
+    function handleShuffleClick() {
         let sum = shuffleCounter
         const Int = setInterval(()=>{
             setShuffleCounter(sum++)
             
             getRandomDiceLetter()
 
-            if (sum === 1) {
+            if (sum === 3) {
                 setShuffleCounter(0)
                 clearInterval(Int)
             }
@@ -291,18 +292,18 @@ export function Board() {
             },
         ]
 
-    return <section className={css["section-container"]} id={"section-container"}>
-        <div className={css["content"]} id={"content"}>
-            <section className={css["board"]} id={"board"}>
-                <div className={css["row-container"]} id={"row-container"}>
+    return <BoardContainer>
+        <BoardContent>
+            <DicesBox>
+                <RowContainer>
                     {ordered?.map((d)=>{
                         return <Dice key={`${d.side + uuid()}`}>{d.side}</Dice>
                         })}
-                </div>
-            </section>
-        </div>
+                </RowContainer>
+            </DicesBox>
+        </BoardContent>
         <ButtonDice className={css["button-start"] + " " + `${!initialState? css["no-display"] : ""}`} letterClassName={css.start} onClick={handleStartClick}>START</ButtonDice> 
         <ButtonDice className={css["button-restart"] + " " + `${initialState? css["no-display"] : ""}`} letterClassName={css["restart"]} onClick={handleRestarClick}>RESTART</ButtonDice>
-        <ButtonDice className={css["button-shuffle"]} letterClassName={css.shuffle} onClick={handleSuffleClick} disabled={buttonShuffleDisabled}>SHUFFLE</ButtonDice>
-    </section>
+        <ButtonDice className={css["button-shuffle"]} letterClassName={css.shuffle} onClick={handleShuffleClick} disabled={buttonShuffleDisabled}>SHUFFLE</ButtonDice>
+    </BoardContainer>
 }

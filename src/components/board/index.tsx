@@ -12,6 +12,7 @@ export function Board() {
 
     const [ordered, setOrdered] = useState(null)
 
+    // positions and positions index are correlated to determine the positions of the dices
     const [positions, setPositions] = useState([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]);
     let [positionIndex, setPositionIndex] = useState(15);
 
@@ -31,7 +32,7 @@ export function Board() {
     const [position14, setPosition14] = useState(0)
     const [position15, setPosition15] = useState(0)
     const [position16, setPosition16] = useState(0)
-    
+
     function handleStartClick() {
         setButtonShuffleDisabled(false)
         setInitialState(false)
@@ -44,18 +45,27 @@ export function Board() {
         resetBoard()
     }
 
-    function getRandomPosition () {
-        let rNumber = getRandomNumberMax(positionIndex)
+    function handleShuffleClick() {
+        let sum = shuffleCounter
         
-        const position = positions[rNumber]
-        const reducedPositions = positions.splice(rNumber, 1)
-        setPositions(reducedPositions)
-        setPositionIndex(positionIndex--)
+        if( positionIndex <= 0) {
+            setPositionIndex(15)
+        }
+        getRandomDiceLetter()
 
-        return position
+        const Int = setInterval(()=>{
+            setShuffleCounter(sum++)
+            
+
+            if (sum === 1) {
+                setShuffleCounter(0)
+                clearInterval(Int)
+            }
+        }, 250)
     }
 
     function getRandomDiceLetter() {
+        // gets a random number to determine the dice face
         const rollDice1 = getRandomNumberMax(5)
         const rollDice2 = getRandomNumberMax(5)
         const rollDice3 = getRandomNumberMax(5)
@@ -66,13 +76,14 @@ export function Board() {
         const rollDice8 = getRandomNumberMax(5)
         const rollDice9 = getRandomNumberMax(5)
         const rollDice10 = getRandomNumberMax(5)
-        const rollDice11= getRandomNumberMax(5)
+        const rollDice11 = getRandomNumberMax(5)
         const rollDice12 = getRandomNumberMax(5)
         const rollDice13 = getRandomNumberMax(5)
         const rollDice14 = getRandomNumberMax(5)
         const rollDice15 = getRandomNumberMax(5)
         const rollDice16 = getRandomNumberMax(5)
 
+        // sets the face dice for each dice
         setIndex1(rollDice1)
         setIndex2(rollDice2)
         setIndex3(rollDice3)
@@ -90,8 +101,7 @@ export function Board() {
         setIndex15(rollDice15)
         setIndex16(rollDice16)
 
-        // RANDOM POSITION
-
+        // gets the random position of each dice in the array
         const positionDice1 = getRandomPosition()
         const positionDice2 = getRandomPosition()
         const positionDice3 = getRandomPosition()
@@ -102,13 +112,15 @@ export function Board() {
         const positionDice8 = getRandomPosition()
         const positionDice9 = getRandomPosition()
         const positionDice10 = getRandomPosition()
-        const positionDice11= getRandomPosition()
+        const positionDice11 = getRandomPosition()
         const positionDice12 = getRandomPosition()
         const positionDice13 = getRandomPosition()
         const positionDice14 = getRandomPosition()
         const positionDice15 = getRandomPosition()
         const positionDice16 = getRandomPosition()
+        setPositions([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])
 
+        // sets the position of each dice in the array
         setPosition1(positionDice1)
         setPosition2(positionDice2)
         setPosition3(positionDice3)
@@ -126,30 +138,40 @@ export function Board() {
         setPosition15(positionDice15)
         setPosition16(positionDice16)
     }
+    
+    // gets a random position for each dice
+    function getRandomPosition () {
+        // this gets a random number, the max number it uses is the positionIndex number
+        // if( positionIndex <= 0) {
+        //     setPositionIndex(15)
+        // }
+
+        let rNumber = getRandomNumberMax(positionIndex) 
+        
+        const position = positions[rNumber]
+        const reducedPositions = positions.splice(rNumber, 1)
+        setPositions(reducedPositions)
+        setPositionIndex(positionIndex--)
+
+        return position
+    }
 
     useEffect(()=>{
         dices.sort(function (a, b) {
-            return a.position -b.position
+            return a.position - b.position
         })
-
+        
         setOrdered(dices)
     }, [positions])
+    
+    useEffect(()=>{
+        // resets the positions index
+        if( positionIndex == 0) {
+            setPositionIndex(15)
+        }
+    }, [positionIndex])
 
-
-    function handleShuffleClick() {
-        let sum = shuffleCounter
-        const Int = setInterval(()=>{
-            setShuffleCounter(sum++)
-            
-            getRandomDiceLetter()
-
-            if (sum === 3) {
-                setShuffleCounter(0)
-                clearInterval(Int)
-            }
-        }, 250)
-    }
-
+    // gets a random number 
     function getRandomNumberMax(max) {
         return Math.floor(Math.random() * max)
     }

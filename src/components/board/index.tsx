@@ -142,10 +142,6 @@ export function Board() {
     // gets a random position for each dice
     function getRandomPosition () {
         // this gets a random number, the max number it uses is the positionIndex number
-        // if( positionIndex <= 0) {
-        //     setPositionIndex(15)
-        // }
-
         let rNumber = getRandomNumberMax(positionIndex) 
         
         const position = positions[rNumber]
